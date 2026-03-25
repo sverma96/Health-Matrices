@@ -20,6 +20,10 @@ from routine_optimizer import routine_optimizer_ui
 if "username" not in st.session_state:
     st.session_state.username = "admin"
 
+# Ensure DB file exists
+if not os.path.exists("health_app_persistent.db"):
+    open("health_app_persistent.db", "w").close()
+
 # Import authentication and database
 import auth
 from database import load_user_profile as load_user_profile_db
