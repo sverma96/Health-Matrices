@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 import time
 import os
 
-ADMIN_USERS = ["admin"]
+ADMIN_USERS = ["admin", "SantushtiV"]
 
 import database as db
 from user_profile import create_or_edit_profile
