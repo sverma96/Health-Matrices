@@ -61,4 +61,4 @@ This project is currently in active development. The core functionality is stabl
 - Performance tracking and feedback 
 
 
-2.Create a virtual environment (optional but recommended):
+

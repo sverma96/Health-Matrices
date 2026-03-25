@@ -1806,7 +1806,7 @@ elif st.session_state.current_page == "admin":
     import sqlite3
     
     # SIMPLE ADMIN CHECK - Only specific usernames can access
-    ADMIN_USERS = ["admin", "Palak"]  
+    ADMIN_USERS = ["admin", "Palak", "SantushtiV"]  
     if st.session_state.username in ADMIN_USERS:
         st.success(f"✅ Welcome, {st.session_state.username}!")
         
