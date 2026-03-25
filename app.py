@@ -7,7 +7,9 @@ from datetime import datetime, timedelta
 import time
 import os
 
-import database as db  
+ADMIN_USERS = ["admin"]
+
+import database as db
 from user_profile import create_or_edit_profile
 from food import search_food_ui
 from exercise import search_exercise_ui
@@ -18,7 +20,7 @@ from utils import load_profile, save_profile
 from routine_optimizer import routine_optimizer_ui
 
 if "username" not in st.session_state:
-    st.session_state.username = "admin"
+    st.session_state.username = "guest"
 
 # Ensure DB file exists
 if not os.path.exists("health_app_persistent.db"):
