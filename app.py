@@ -17,6 +17,9 @@ from workout_generator import workout_generator_ui
 from utils import load_profile, save_profile
 from routine_optimizer import routine_optimizer_ui
 
+if "username" not in st.session_state:
+    st.session_state.username = "admin"
+
 # Import authentication and database
 import auth
 from database import load_user_profile as load_user_profile_db
@@ -1806,9 +1809,14 @@ elif st.session_state.current_page == "admin":
     import sqlite3
     
     # SIMPLE ADMIN CHECK - Only specific usernames can access
-    ADMIN_USERS = ["admin", "Palak", "SantushtiV"]  
-    if st.session_state.username in ADMIN_USERS:
-        st.success(f"✅ Welcome, {st.session_state.username}!")
+    ADMIN_USERS = ["admin", "Palak", "Santushti"]
+
+    username = st.session_state.get("username", None)
+
+    if username and username in ADMIN_USERS:
+        st.success(f"Welcome, {username}!")
+    else:
+        st.error("Access Denied - Admin Privileges Required")
         
         # Show user statistics
         stats = db.get_user_stats()
