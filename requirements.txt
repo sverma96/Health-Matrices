@@ -17,9 +17,9 @@ jsonschema==4.25.1
 jsonschema-specifications==2025.4.1
 MarkupSafe==3.0.2
 narwhals==2.2.0
-numpy==2.3.2
+numpy==1.26.4
 packaging==25.0
-pandas==2.3.2
+pandas==2.2.2
 pillow==11.3.0
 plotly==6.3.1
 prompt_toolkit==3.0.52
