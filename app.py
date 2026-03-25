@@ -1903,19 +1903,41 @@ elif st.session_state.current_page == "admin":
                     
             except Exception as e:
                 st.error(f"Error loading profiles: {str(e)}")
-    
-    else:
-        st.error("🚫 Access Denied - Admin Privileges Required")
-        st.info("This section is only accessible to administrators.")
-        
-        if st.session_state.logged_in:
-            st.write(f"Current user: {st.session_state.username}")
-        else:
-            st.write("Please log in with an admin account.")
+  
+   # ✅ Admin Access Control
+if "username" in st.session_state and st.session_state.username in ADMIN_USERS:
+    try:
+        # =========================
+        # YOUR ADMIN CODE
+        # =========================
 
-        if st.button("🔙 Go Back to Dashboard", use_container_width=True):
-            st.session_state.current_page = "dashboard"
-            st.rerun()
+        stats = db.get_user_stats()
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.metric("Total Users", stats.get("total_users", 0))
+        with col2:
+            st.metric("Active Users", stats.get("active_users", 0))
+        with col3:
+            st.metric("New Users", stats.get("new_users", 0))
+
+        # =========================
+
+    except Exception as e:
+        st.error(f"Error loading profiles: {str(e)}")
+
+else:
+    st.error("🚫 Access Denied - Admin Privileges Required")
+    st.info("This section is only accessible to administrators.")
+
+    if st.session_state.get("logged_in", False):
+        st.write(f"Current user: {st.session_state.get('username', 'Unknown')}")
+    else:
+        st.write("Please log in with an admin account.")
+
+    if st.button("⬅ Go Back to Dashboard", use_container_width=True):
+        st.session_state.current_page = "dashboard"
+        st.rerun()
 
 # Enhanced Footer
 st.markdown("---")
