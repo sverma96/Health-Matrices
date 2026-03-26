@@ -43,7 +43,7 @@ venv\Scripts\activate      # Windows
 pip install -r requirements.txt
 
 4.Run the application:
-streamlit run app1.py
+streamlit run app.py
 
 
 ## 💡 Note: Active Development
